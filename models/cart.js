@@ -1,5 +1,5 @@
 const Sequelize = require("sequelize");
-const sequelize = require("../DB/sequelize");
+const sequelize = require("../db");
 const Product = require("./product");
 
 // Define the Cart Schema

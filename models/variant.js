@@ -1,5 +1,6 @@
 const Sequelize = require("sequelize");
-const sequelize = require("../DB/sequelize");
+const sequelize = require("../db");
+const Product = require("./product");
 
 const _ = require("lodash");
 // Define the Variant Schema
@@ -19,10 +20,10 @@ const Variant = sequelize.define(
 		},
 		images: {
 			type: Sequelize.STRING,
-			get: function () {
+			get() {
 				return JSON.parse(this.getDataValue("images"));
 			},
-			set: function (val) {
+			set(val) {
 				return this.setDataValue("images", JSON.stringify(val));
 			},
 		},
@@ -32,6 +33,9 @@ const Variant = sequelize.define(
 	},
 	{ timestamps: true, createdAt: "date_uploaded", updatedAt: "date_updated" }
 );
+
+Product.hasMany(Variant, { foreignKey: "product_id" });
+Variant.belongsTo(Product);
 
 Variant.sync({ alter: true });
 

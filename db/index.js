@@ -1,7 +1,4 @@
 const Sequelize = require("sequelize");
-
-console.log(process.env.DB_USER);
-
 const sequelize = new Sequelize(
 	process.env.DATABASE,
 	process.env.DB_USER,
@@ -10,7 +7,6 @@ const sequelize = new Sequelize(
 		dialect: "mysql",
 		host: process.env.DB_HOST,
 		port: process.env.DB_PORT,
-		query: { raw: true },
 	}
 );
 
