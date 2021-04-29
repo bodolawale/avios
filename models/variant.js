@@ -1,9 +1,10 @@
 const Sequelize = require("sequelize");
 const sequelize = require("../DB/sequelize");
 
-// Define the Variety Schema
-const Variety = sequelize.define(
-	"variety",
+const _ = require("lodash");
+// Define the Variant Schema
+const Variant = sequelize.define(
+	"variant",
 	{
 		price: {
 			type: Sequelize.INTEGER,
@@ -32,6 +33,6 @@ const Variety = sequelize.define(
 	{ timestamps: true, createdAt: "date_uploaded", updatedAt: "date_updated" }
 );
 
-Variety.sync({ alter: true });
+Variant.sync({ alter: true });
 
-module.exports = Variety;
+module.exports = Variant;

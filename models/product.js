@@ -1,6 +1,6 @@
 const Sequelize = require("sequelize");
 const sequelize = require("../DB/sequelize");
-const Variety = require("./variety");
+const Variant = require("./variant");
 
 // Define the Product Schema
 const Product = sequelize.define(
@@ -22,9 +22,10 @@ const Product = sequelize.define(
 
 Product.sync({ alter: true });
 
-Product.hasMany(Variety, {
+Product.hasMany(Variant, {
+	foreignKey: "product_id",
 	onDelete: "CASCADE",
 });
-Variety.belongsTo(Product);
+Variant.belongsTo(Product);
 
 module.exports = Product;
